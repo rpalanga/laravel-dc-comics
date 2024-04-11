@@ -40,8 +40,8 @@ class ComicController extends Controller
         $newComic->sale_date = $request->sale_date;
         $newComic->type = $request->type;
 
-        // $newComic->artists = implode(',', $request['artists']);
-        // $newComic->writers = implode(',', $request['writers']);
+        $newComic->artists = $request->artists;
+        $newComic->writers = $request->writers;
 
         $newComic->save();
         

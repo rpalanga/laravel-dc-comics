@@ -20,6 +20,7 @@ class ComicSeeder extends Seeder
             $newComic = new Comic();
 
             $newComic->title = $comic['title'];
+            $newComic->description = $comic['description'];
             $newComic->thumb = $comic['thumb'];
             $newComic->price = $comic['price'];
             $newComic->series = $comic['series'];

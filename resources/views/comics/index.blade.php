@@ -4,7 +4,7 @@
 
 
 
-<div class="container row flex-wrap gap-2  justify-content-center mx-auto ">
+<div class="container row flex-wrap gap-2  justify-content-center mx-auto my-3">
 
     <h2 class=" text-center my-4 display-4 text-danger-emphasis fw-bolder">Let's see the comics</h2>
 
@@ -23,7 +23,7 @@
     
     @endforeach
 
-    <a href="{{route('comics.create')}}" class="btn btn-primary row"> Inserisci un Nuovo fumetto</a>
+    <a href="{{route('comics.create')}}" class="btn btn-primary "> Inserisci un Nuovo fumetto</a>
 
 </div>
 

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Comic;
+use Illuminate\Support\Facades\Validator;
 
 class ComicController extends Controller
 {
@@ -30,6 +31,8 @@ class ComicController extends Controller
      */
     public function store(Request $request)
     {
+        $this->validation($request->all());
+
         $newComic = new Comic();
 
         $newComic->title = $request->title;
@@ -69,6 +72,8 @@ class ComicController extends Controller
      */
     public function update(Request $request, Comic $comic)
     {
+        $this->validation($request->all());
+
         $comic->title = $request->title;
         $comic->description = $request->description;
         $comic->thumb = $request->thumb;
@@ -91,5 +96,39 @@ class ComicController extends Controller
     {
         $comic->delete();
         return redirect()->route('comics.index');
+    }
+
+    private function validation($data){
+
+        $validator = Validator::make($data,[
+            'title'=> 'required|max:100',
+            'description' => 'required|max:8000',
+            'thumb'=> 'nullable|max:8000',
+            'price'=> 'required|30',
+            'series'=> 'rerequired|max:50',
+            'sale_date'=> 'required|date|max:10',
+            'type'=> 'required|max:100',
+            'artists'=> 'required|max:500',
+            'writers'=> 'required|max:500'
+            ],[
+                // 'title'=> 'Hai dimenticato di inserire il titolo',
+                'required'=> 'Hai dimenticato di inserire :attributes',
+                'max'=> 'Il valore inserito in :attributes ha superato il valore :max di caratteri',
+                
+
+            
+            ],[
+
+            'title'=> 'Titolo',
+            'description' => 'Descrizione',
+            'thumb'=> 'Immagine',
+            'price'=> 'Prezzo',
+            'series'=> 'Serie',
+            'sale_date'=> 'Data di uscita',
+            'type'=> 'Tipologia',
+            'artists'=> 'Artisti',
+            'writers'=> 'Scrittori',
+
+            ])->validate();
     }
 }

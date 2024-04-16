@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreComicRequest;
 use Illuminate\Http\Request;
 use App\Models\Comic;
 use Illuminate\Support\Facades\Validator;
@@ -29,9 +30,10 @@ class ComicController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(StoreComicRequest $request)
     {
-        $this->validation($request->all());
+        // $this->validation($request->all());
+        $request->validated();
 
         $newComic = new Comic();
 
@@ -70,9 +72,11 @@ class ComicController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Comic $comic)
+    public function update(StoreComicRequest $request, Comic $comic)
     {
-        $this->validation($request->all());
+        // $this->validation($request->all());
+        $request->validated();
+
 
         $comic->title = $request->title;
         $comic->description = $request->description;
@@ -98,39 +102,39 @@ class ComicController extends Controller
         return redirect()->route('comics.index');
     }
 
-  private function validation($data){
+//   private function validation($data){
 
-    $validator = Validator::make($data, [
-        'title'=> 'required|max:100',
-        'description' => 'required|max:8000',
-        'thumb'=> 'nullable|max:8000',
-        'price'=> 'required|max:30',
-        'series'=> 'required|max:50',
-        'sale_date'=> 'required|date|max:10',
-        'type'=> 'required|max:100',
-        'artists'=> 'required|max:500',
-        'writers'=> 'required|max:500'
-    ],[
-        //  'title'=> 'Hai dimenticato di inserire il titolo',
-        'required'=> 'Hai dimenticato di inserire :attribute',
-        'max'=> 'Il valore inserito in :attribute ha superato il valore :max di caratteri',
-    ]
+//     $validator = Validator::make($data, [
+//         'title'=> 'required|max:100',
+//         'description' => 'required|max:8000',
+//         'thumb'=> 'nullable|max:8000',
+//         'price'=> 'required|max:30',
+//         'series'=> 'required|max:50',
+//         'sale_date'=> 'required|date|max:10',
+//         'type'=> 'required|max:100',
+//         'artists'=> 'required|max:500',
+//         'writers'=> 'required|max:500'
+//     ],[
+//         //  'title'=> 'Hai dimenticato di inserire il titolo',
+//         'required'=> 'Hai dimenticato di inserire :attribute',
+//         'max'=> 'Il valore inserito in :attribute ha superato il valore :max di caratteri',
+//     ]
     
-    ,[
-        'title'=> 'Titolo',
-        'description' => 'Descrizione',
-        'thumb'=> 'Immagine',
-        'price'=> 'Prezzo',
-        'series'=> 'Serie',
-        'sale_date'=> 'Data di uscita',
-        'type'=> 'Tipologia',
-        'artists'=> 'Artisti',
-        'writers'=> 'Scrittori',
-    ]
+//     ,[
+//         'title'=> 'Titolo',
+//         'description' => 'Descrizione',
+//         'thumb'=> 'Immagine',
+//         'price'=> 'Prezzo',
+//         'series'=> 'Serie',
+//         'sale_date'=> 'Data di uscita',
+//         'type'=> 'Tipologia',
+//         'artists'=> 'Artisti',
+//         'writers'=> 'Scrittori',
+//     ]
     
-    )->validate();
+//     )->validate();
 
 
-  }
+//   }
 }
 

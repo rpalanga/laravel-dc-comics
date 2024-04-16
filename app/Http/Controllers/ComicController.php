@@ -6,7 +6,6 @@ use Illuminate\Http\Request;
 use App\Models\Comic;
 use Illuminate\Support\Facades\Validator;
 
-
 class ComicController extends Controller
 {
     /**

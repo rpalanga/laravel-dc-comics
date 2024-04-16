@@ -23,7 +23,7 @@
     
     @endforeach
 
-    <a href="{{route('comics.create')}}" class="btn btn-primary "> Inserisci un Nuovo fumetto</a>
+    <a href="{{route('comics.create')}}" class="btn btn-primary w-50 my-3"> Inserisci un Nuovo fumetto</a>
 
 </div>
 

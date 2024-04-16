@@ -23,10 +23,15 @@
     
     @endforeach
 
-    <a href="{{route('comics.create')}}" class="btn btn-primary w-50 my-3"> Inserisci un Nuovo fumetto</a>
+    
+  </div>
+  <div class="container">
+    <div class="row justify-content-center">
+      <a href="{{route('comics.create')}}" class="btn btn-primary my-3 col-3"> Inserisci un Nuovo fumetto</a>
 
-</div>
-
+    </div>
+  </div>
+  
 
 
 
